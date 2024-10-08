@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp6
@@ -10,6 +10,7 @@ namespace WindowsFormsApp6
             InitializeComponent();
         }
 
+        // Клас прямокутника
         public class Rectangle
         {
             // Поля для ширини і висоти
@@ -30,13 +31,14 @@ namespace WindowsFormsApp6
                 this.height = height;
             }
 
-            // Властивості для ширини та висоти
+            // Властивості для ширини
             public double Width
             {
                 get { return width; }
                 set { width = value; }
             }
 
+            // Властивості для висоти
             public double Height
             {
                 get { return height; }
@@ -56,58 +58,63 @@ namespace WindowsFormsApp6
             }
         }
 
+        // Обробник події для кнопки "Обчислити"
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Попытка преобразовать текстовые поля в числа
+                // Спроба перетворити введені дані в числа
                 double width = Convert.ToDouble(txtWidth.Text);
                 double height = Convert.ToDouble(txtHeight.Text);
 
-                // Создаём объект класса Rectangle с введёнными значениями
+                // Створення об'єкта класу Rectangle з введеними параметрами
                 Rectangle rect = new Rectangle(width, height);
 
-                // Вычисляем периметр и площадь
+                // Обчислення периметра і площі
                 double perimeter = rect.CalculatePerimeter();
                 double area = rect.CalculateArea();
 
-                // Выводим результаты на форму
+                // Виведення результатів на форму
                 labelP.Text = "Периметр: " + perimeter.ToString();
                 labelS.Text = "Площа: " + area.ToString();
             }
             catch (Exception ex)
             {
-                // Если произошла ошибка, создаём прямоугольник с параметрами по умолчанию
+                // Якщо виникла помилка, використовується прямокутник з параметрами за замовчуванням
                 MessageBox.Show("Некоректні дані. Використовується стандартний прямокутник (ширина = 1, висота = 1).");
 
-                // Создаём объект с использованием конструктора без параметров
+                // Створення об'єкта з використанням конструктора без параметрів
                 Rectangle rect = new Rectangle();
 
-                // Вычисляем периметр и площадь для прямоугольника с параметрами по умолчанию
+                // Обчислення периметра і площі для прямокутника за замовчуванням
                 double perimeter = rect.CalculatePerimeter();
                 double area = rect.CalculateArea();
 
-                // Выводим результаты на форму
+                // Виведення результатів на форму
                 labelP.Text = "Периметр: " + perimeter.ToString();
                 labelS.Text = "Площа: " + area.ToString();
             }
         }
 
+        // Обробник зміни тексту в полі для ширини
         private void txtWidth_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        // Обробник зміни тексту в полі для висоти
         private void txtHeight_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        // Обробник натискання на мітку для периметра
         private void labelP_Click(object sender, EventArgs e)
         {
 
         }
 
+        // Обробник натискання на мітку для площі
         private void labelS_Click(object sender, EventArgs e)
         {
 
